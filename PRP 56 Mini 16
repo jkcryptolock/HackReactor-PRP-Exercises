@@ -1,0 +1,22 @@
+// Time Limit 45 minute
+// Write a function callometer that takes a function and returns a new function with a new feature: a "callometer."  The new function will console log a message saying how many times the function has been called.
+
+function callometer(func) {
+ var count = 0;
+ return function() {
+  count++;
+  console.log("Callometer: " + count);
+  return func.apply(null, arguments);
+  };
+};
+
+var add = function(a, b) {
+  return a + b;
+};
+
+var addCount = callometer(add);
+
+add(2,3); //5
+addCount(2,3);  //5 console - Callometer:  1
+addCount(2,4);  //6 console - Callometer:  2
+addCount(8,3);  //11 console - Callometer:  3
