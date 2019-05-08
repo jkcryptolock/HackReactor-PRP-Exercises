@@ -1,0 +1,31 @@
+// Time Limit 45 minutes
+// Write a function collectionConverter that takes an object or an array and returns a new collection in a different format (object to array or array to object).
+
+
+var arrZoo = ['zebra', 4, 'rhino', true, 'monkeys', 'many', 'tiger', 'siberian'];
+var objZoo = {
+  zebra: 4,
+  rhino: true,
+  monkeys: 'many',
+  tiger: 'siberian'
+}
+
+function collectionConverter(obj){
+  if (Array.isArray(obj)){
+    newObj = {};
+    for (var i = 0; i < obj.length; i+=2){
+      newObj[obj[i]] = obj[i+1];
+    }
+    return newObj;
+  } else {
+    var newArr = [];
+    for (var key in obj){
+      newArr.push(key);
+      newArr.push(obj[key]);
+    }
+    return newArr;
+  }
+}
+//collectionConverter(arrZoo); // { zebra: 4, rhino: true, monkeys: 'many' tiger: 'siberian'}
+
+collectionConverter(objZoo); // ['zebra', 4, 'rhino', true, 'monkeys', 'many', 'tiger', 'siberian']
