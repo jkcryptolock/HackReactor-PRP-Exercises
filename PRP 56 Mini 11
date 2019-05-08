@@ -1,0 +1,43 @@
+// Time limit 45 minutes
+// Write a function romanToNum that takes in a string of Roman numerals and returns the value in a number.
+// https://en.wikipedia.org/wiki/Roman_numerals
+
+// I - 1
+// V - 5
+// X - 10
+// L - 50
+// C - 100
+// D - 500
+// M - 1000
+
+var romanToNum = function(roman) {  
+  var result = 0;
+  var modernNums = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+  var romanNums = ["M", "CM","D","CD","C", "XC", "L", "XL", "X","IX","V","IV","I"];
+  for (var i = 0; i <= modernNums.length; i++) {
+    while (roman.indexOf(romanNums[i]) === 0){
+      result += modernNums[i];
+      roman = roman.replace(romanNums[i],'');
+    }
+  }
+  return result;
+};
+
+romanToNum('MMXVIII'); //2018
+//romanToNum('MCMXCIX'); //1999
+//romanToNum('IV'); //4
+//romanToNum('XXXIII') //33
+
+function numToRoman(num) {
+  var lookup = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1};
+  var roman = '';
+  for (var i in lookup) {
+    while (num >= lookup[i]) {
+      roman += i;
+      num -= lookup[i];
+    }
+  }
+  return roman;
+}
+
+numToRoman(2019);
