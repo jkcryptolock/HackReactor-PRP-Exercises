@@ -1,0 +1,24 @@
+//Time Limit 45 minutes
+// Write a function toggleCase which takes in a string and returns a new string where all the lowercase 
+// letters are changed to uppercase and all the uppercase letters are changed to lowercase.
+
+// toggleCase('MaRio'); //'mArIO'
+// toggleCase('SSP'); //'ssp'
+// toggleCase('Good news, everyone!'); //'gOOD NEWS, EVERYONE!'
+
+function convertString(str){
+    var s = '';
+    for (var i = 0; i < str.length; i++) {
+        var n = str.charAt(i);
+        if ( n === n.toUpperCase() ){
+          s +=n.toLowerCase();
+        } else {
+          s+= n.toUpperCase();
+        }
+}
+  return s;
+}
+
+console.log(convertString('hallo, HOW are YOU'));
+
+
