@@ -1,0 +1,50 @@
+// Time Limit 45 minutes
+// Write a function coinFlip that returns at random either 'heads' or 'tails'
+// HINT: look into Math.random()
+
+//function simulates flipping a coin
+function coinFlip(){
+  //set variable to random value between 0 and 1
+  var num = Math.random();
+  //return heads if value is below .5
+  if (num >= 0 && num < .5){
+    return 'heads';
+    //return tails if value is above .5 and 1
+  } else {
+    return 'tails';
+  }
+}
+//function uses the coinFlip function 100 times and builds an array of the results
+function tallyResults(){
+  //create empty array to store heads or tails values
+  var array = [];
+  //interate up to 100 values to store in the array
+  for (var i = 0; i < 100; i++){
+    //set each array index to the result of the coinFlip function
+    array[i] = coinFlip();
+  }
+  //return the array that was built
+  return array;
+}
+//function to compare number of heads results vs. tails results in array
+function calculateOdds(){
+  //create array variable from tallyResults function
+  var results = tallyResults();
+  //set two variables to count the number of each result
+  var heads = 0;
+  var tails = 0;
+  //interate through the tallyResults array and count up heads or tails variables based upon the value at each index
+  for (var i = 0; i < results.length; i++){
+    if (results[i] === 'heads'){
+      heads += 1;
+    } else {
+      tails += 1;
+    }
+  }
+  //return string with total number of heads vs. tails
+  return 'Heads total [' + heads + '] and Tails total [' + tails + ']';
+}
+//call top-level function
+calculateOdds();
+
+// BONUS: Can you devise a way to investigate if your function produces 'heads' and 'tails' with a roughly 50/50 split?
