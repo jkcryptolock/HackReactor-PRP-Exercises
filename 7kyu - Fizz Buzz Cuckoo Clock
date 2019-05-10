@@ -1,0 +1,29 @@
+//https://www.codewars.com/kata/fizz-buzz-cuckoo-clock/train/javascript
+
+function fizzBuzzCuckooClock(time) {
+  var arr = time.split(':');
+  var hours = Number(arr[0]), minutes = Number(arr[1]);
+  if (hours > 12){
+    hours -= 12;
+  }
+  if (minutes === 30){
+    return 'Cuckoo';
+  }
+  if (hours === 0 && minutes === 0){
+    return 'Cuckoo '.repeat(11) + 'Cuckoo';
+  }
+  if (minutes === 0){
+    return 'Cuckoo '.repeat(hours - 1) + 'Cuckoo';
+  }
+  if (minutes % 3 === 0 && minutes % 5 === 0){
+    return 'Fizz Buzz'
+  }
+  if (minutes % 3 === 0){
+    return 'Fizz';
+  }
+  if (minutes % 5 === 0){
+    return 'Buzz'
+  } else {
+    return 'tick'
+  }
+}
